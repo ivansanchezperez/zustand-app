@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { Button } from 'zustand-sc'
+import { Button, StoreView, useBearStore } from 'zustand-sc'
 
 function App() {
+  const countBears = useBearStore((state: any) => state.bears)
   const [count, setCount] = useState(0)
 
   return (
@@ -30,6 +32,9 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+      <span>{countBears}</span>
+      <StoreView/>
     </>
   )
 }
